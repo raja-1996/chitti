@@ -27,7 +27,7 @@ def load_glove(embeddings_index, word_index):
 
     return embedding_matrix
 
-def download_pretrained_vectors(EMBEDDING_FILE, dir = 'Pretrained_Word2Vectors'):
+def download_pretrained_vectors_(EMBEDDING_FILE, dir = 'Pretrained_Word2Vectors'):
 
     embeddings_index = load_matrix(EMBEDDING_FILE)
     word_index = dict([(word, i + 2) for i, word in enumerate(embeddings_index.keys())])
@@ -56,7 +56,7 @@ def download_pretrained_vectors(EMBEDDING_FILE, dir = 'Pretrained_Word2Vectors')
 
 
 
-def download_pretrained_vectors_(name='', dir = 'Pretrained_Word2Vectors'):
+def download_pretrained_vectors(name='', dir = 'Pretrained_Word2Vectors'):
     supported_vectors = ['GloVe.6B.50d', 'GloVe.6B.100d', 'GloVe.6B.200d', 'GloVe.6B.300d', 'GloVe.42B.300d',
                          'GloVe.840B.300d', 'word2vec.GoogleNews', 'GloVe.Twitter.25d', 'GloVe.Twitter.50d', 'GloVe.Twitter.100d', 'GloVe.Twitter.200d']
 
@@ -69,13 +69,9 @@ def download_pretrained_vectors_(name='', dir = 'Pretrained_Word2Vectors'):
     print('Files  Downloaded to {}'.format(dir))
 
     EMBEDDING_FILE = join(dir, name.lower()+'.txt')
-    download_pretrained_vectors(EMBEDDING_FILE, dir)
-
-
-
-
+    download_pretrained_vectors_(EMBEDDING_FILE, dir)
 
 if __name__ == '__main__':
-    download_pretrained_vectors_('GloVe.6B.50d')
+    download_pretrained_vectors('GloVe.6B.50d')
     # EMBEDDING_FILE = '/Users/rajamohanreddybollavaram/Downloads/glove.6B/glove.6B.50d.txt'
     # download_pretrained_vectors(EMBEDDING_FILE)

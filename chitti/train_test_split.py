@@ -1,7 +1,7 @@
 from random import shuffle
 import pandas as pd
 
-def train_val_split_(dfs, text_col, target_col):
+def train_val_split_(dfs, text_col, target_col, size):
     train = []
     val = []
     targets = dfs[target_col].unique()
@@ -11,16 +11,16 @@ def train_val_split_(dfs, text_col, target_col):
 
         temp = [(sent, target) for sent in sents]
         n = len(temp)
-        k = int(0.8 *n)
+        k = int(size*n)
 
         train.extend(temp[:k])
         val.extend(temp[k:])
     return train, val
 
-def train_val_split(df, text_col, target_col):
-    train, val = train_val_split_(df, text_col, target_col)
-    train_df = pd.DataFrame(train, columns=['text', 'labels'])
-    val_df = pd.DataFrame(val, columns=['text', 'labels'])
+def train_val_split(df, text_col, target_col, size=0.8):
+    train, val = train_val_split_(df, text_col, target_col, size)
+    train_df = pd.DataFrame(train, columns=[text_col, target_col])
+    val_df = pd.DataFrame(val, columns=[text_col, target_col])
 
     return train_df, val_df
 
