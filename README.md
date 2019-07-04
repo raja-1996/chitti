@@ -4,7 +4,7 @@
 pip install chitti
 ```
 
-##Pretty print
+## Pretty print
 ```
 from chitti import pprint, pprint_nl
 brands = ['apple', 'samsung', 'pixel', 'one plus']
