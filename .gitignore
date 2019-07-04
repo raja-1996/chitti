@@ -1,0 +1,7 @@
+build/
+chitti.egg-info/
+dist/
+.idea/
+.DS_Store
+Commands.txt
+.ipynb_checkpoints
